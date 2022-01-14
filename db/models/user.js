@@ -2,6 +2,7 @@
 
 const {Model, DataTypes} = require("sequelize");
 const { sequelize } = require(".");
+const bcrypt = require("bcryptjs")
 
 module.exports = (sequelize, DataTypes) => {
 
@@ -41,5 +42,23 @@ module.exports = (sequelize, DataTypes) => {
     }
     );
 
+    //User.addScope("defaultScope", {
+      //  attributes: {exclude: ["password"]},
+   // });
+
+    User.beforeCreate(cambiarContraseña);
+
     return User;
 };
+
+function cambiarContraseña(user){
+    if(user.changed('password')){
+        user.password = encriptarContraseña(user.get("password"));
+    }
+}
+
+function encriptarContraseña(contraseña){
+    const salt = bcrypt.genSaltSync();
+    return bcrypt.hashSync(contraseña, salt);
+
+}

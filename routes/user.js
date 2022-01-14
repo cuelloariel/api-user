@@ -1,10 +1,12 @@
-const req = require("express/lib/request")
+//const req = require("express/lib/request")
+
+const controllerAuth = require("../controllers/auth");
+
 
 const user = (router) => {
     
-    router.get('/users', (req,res) => {
-        res.send({ success: true });
-    });
+    router.post("/signUp", controllerAuth.signUp);
+    
 };
 
 module.exports = user;
