@@ -1,9 +1,12 @@
 
-//const login = require("./login");
+
 
 const signUp = require("./signUp");
+const login = require("./login");
+const profile = require("./profile");
 
 module.exports = {
-  //  login,
+  login,
   signUp,
+  profile
 };

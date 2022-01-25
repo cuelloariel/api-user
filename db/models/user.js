@@ -46,6 +46,8 @@ module.exports = (sequelize, DataTypes) => {
       //  attributes: {exclude: ["password"]},
    // });
 
+//hook
+
     User.beforeCreate(cambiarContraseña);
     User.prototype.toJSON = function () {
         var values = Object.assign({}, this.get());
