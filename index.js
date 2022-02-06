@@ -3,6 +3,9 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const logMiddleware = require("./middlewares/logMiddleware");
+const saveUserLogMiddleware = require("./middlewares/saveUserLogMiddleware");
+const notFoundMiddleware = require("./middlewares/notFoundMiddleware");
+
 
 const router = require("./routes");
 //DB
@@ -21,6 +24,9 @@ app.use(bodyParser.json({limit: '100kb', parametersLimit: "10000"}));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use("/api/v1", router);
+
+app.use(saveUserLogMiddleware);
+app.use(notFoundMiddleware);
 
 app.listen(PORT, () => {
 

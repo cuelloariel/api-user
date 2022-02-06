@@ -13,8 +13,8 @@ const getJWT = (user) => {
     
 };
 
-const verifyJWT = async (token) => {
+const verifyJwtAndLoadPayload = async (token) => {
     return jwt.verify(token, secret);
 };
 
-module.exports = {getJWT, verifyJWT};
+module.exports = {getJWT, verifyJwtAndLoadPayload};

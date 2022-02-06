@@ -23,7 +23,7 @@ if (config.use_env_variable) {
 connection
     .authenticate()
     .then(() => {
-        console.info("La Base de Loan ha sido conectada con exito!");
+        console.info("La Base de Ariel ha sido conectada con exito!");
     })
     .catch((err) => {
         console.error("ERROR: Al conectarse con la base. " + err);
